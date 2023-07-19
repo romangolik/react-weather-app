@@ -42,7 +42,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
             loader: 'babel-loader',
             options: {
                 presets: [
-                    ['@babel/preset-env', {targets: "defaults"}]
+                    ['@babel/preset-env', '@babel/preset-react', {targets: "defaults"}]
                 ],
                 plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
             }

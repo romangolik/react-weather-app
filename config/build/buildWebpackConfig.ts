@@ -24,6 +24,9 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
          clean: true,
          publicPath: '/'
      },
+     performance: {
+        hints: false
+     },
      plugins: buildPlugins(options),
  }
 }

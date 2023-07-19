@@ -6,12 +6,13 @@
     "start": "netlify dev",
     "dev": "webpack-dev-server --env mode=development",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --mode production"
+    "build:prod": "webpack --config ./webpack.config.ts --env mode=development"
   },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.21.0",
     "@babel/preset-env": "7.20.2",
+    "@babel/preset-react": "7.22.5",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@types/node": "18.15.0",
     "@types/react": "18.0.28",
