@@ -2,7 +2,6 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import StylelintWebpackPlugin from "stylelint-webpack-plugin";
 
 import { BuildOptions } from "./types/config";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
@@ -29,11 +28,6 @@ export function buildPlugins(
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: paths.htmlTemplate,
-    }),
-    new StylelintWebpackPlugin({
-      configFile: ".stylelintrc",
-      files: "**/*.scss",
-      failOnError: true,
     }),
     new webpack.DefinePlugin(envKeys),
   ];
