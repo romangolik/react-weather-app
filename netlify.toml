@@ -1,6 +1,7 @@
 [build]
+  base = "/"
+  publish = "./build"
   command = "npm run build:prod"
-  publish = "build"
 
 [dev]
   command = "npm run dev"
