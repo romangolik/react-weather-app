@@ -1,0 +1,15 @@
+.additional-conditions {
+  &__content {
+    display: grid;
+    grid-gap: 24px 52px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .additional-conditions {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

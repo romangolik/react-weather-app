@@ -1,0 +1,40 @@
+.content-block {
+  padding: 32px;
+
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: var(--bg-primary);
+  box-shadow: rgba(0, 0, 0, 8%) 0 0 0;
+
+  &_smaller-padding {
+    padding: 24px 14px;
+  }
+
+  &_padding-none {
+    padding: 0;
+  }
+
+  &_smaller-radius {
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .content-block {
+    padding: 24px;
+
+    &_padding-none {
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .content-block {
+    padding: 16px;
+
+    &_padding-none {
+      padding: 0;
+    }
+  }
+}

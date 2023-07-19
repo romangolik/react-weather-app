@@ -1,0 +1,63 @@
+.weather-row {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  &__day {
+    width: 60px;
+
+    color: var(--text-primary-color);
+  }
+
+  &__condition {
+    display: flex;
+    align-items: center;
+  }
+
+  &__condition-image {
+    width: 54px;
+    height: 54px;
+    margin-right: 16px;
+  }
+
+  &__condition-text {
+    color: var(--text-secondary-color);
+  }
+
+  &__temperature {
+    width: 60px;
+
+    color: var(--text-primary-color);
+
+    text-align: right;
+  }
+
+  &__temperature-max {
+    color: var(--text-secondary-color);
+  }
+
+  &_skeleton {
+    .weather-row__condition-text {
+      width: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .weather-row {
+    &__day {
+      width: 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .weather-row {
+    &__condition-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
+    }
+  }
+}

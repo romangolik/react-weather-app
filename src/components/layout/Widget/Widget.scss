@@ -1,0 +1,28 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: var(--text-primary-color);
+    text-transform: uppercase;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .widget {
+    &__header {
+      margin-bottom: 12px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.dark-theme {
+  --body-bg: var(--black);
+  --toggle-group-bg: var(--black);
+  --toggle-group-button-bg: var(--black);
+  --toggle-group-button-active-bg: var(--dark-grey-blue);
+  --bg-primary: var(--dark);
+  --button-base-bg: var(--blue);
+  --button-base-hover-bg: var(--blue-d20);
+  --button-primary-bg: var(--red);
+  --button-primary-hover-bg: var(--red-l5);
+  --switch-bg: var(--dark-grey-blue);
+  --switch-thumb-bg: var(--anti-flash-white);
+  --switch-active-bg: var(--blue);
+  --skeleton-bg: var(--opacity-white);
+
+  --border-base-color: var(--dark);
+  --border-primary-color: var(--blue);
+
+  --divider-color: var(--dark-grey-blue);
+  
+  --text-primary-color: var(--grey);
+  --text-secondary-color: var(--anti-flash-white);
+  --text-tertiary-color: var(--silver);
+  --button-text-color: var(--anti-flash-white);
+  --search-text-color: var(--iron); 
+  --autocomplete-hover-text-color: var(--blue);
+  --toggle-group-button-text-color: var(--grey);
+  --toggle-group-button-active-text-color: var(--silver);
+}
+
+.light-theme {
+  --body-bg: var(--white-smoke);
+  --toggle-group-bg: var(--white-smoke);
+  --toggle-group-button-bg: var(--white-smoke);
+  --toggle-group-button-active-bg: var(--silver);
+  --bg-primary: var(--white);
+  --button-base-bg: var(--blue);
+  --button-base-hover-bg: var(--blue-d20);
+  --button-primary-bg: var(--red);
+  --button-primary-hover-bg: var(--red-l5);
+  --switch-bg: var(--silver);
+  --switch-thumb-bg: var(--anti-flash-white);
+  --switch-active-bg: var(--blue);
+  --skeleton-bg: var(--opacity-black);
+
+  --border-base-color: var(--white);
+  --border-primary-color: var(--blue);
+
+  --divider-color: var(--grey);
+  
+  --text-primary-color: var(--grey);
+  --text-secondary-color: var(--dark);
+  --text-tertiary-color: var(--dark-grey-blue);
+  --button-text-color: var(--anti-flash-white);
+  --search-text-color: var(--grey);
+  --autocomplete-hover-text-color: var(--blue);
+  --toggle-group-button-text-color: var(--dark-grey-blue);
+  --toggle-group-button-active-text-color: var(--dark-grey-blue);
+}

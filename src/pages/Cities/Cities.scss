@@ -1,0 +1,31 @@
+.cities-page {
+  &__left-part {
+    display: flex;
+    gap: 16px 0;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  &__right-part {
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+  }
+
+  &__empty-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0;
+  }
+
+  &__heading {
+    margin-bottom: 8px;
+
+    color: var(--text-secondary-color);
+  }
+
+  &__paragraph {
+    color: var(--text-primary-color);
+  }
+}

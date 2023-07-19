@@ -1,0 +1,74 @@
+.general-info {
+  --gap: 20px;
+  --image-width: clamp(154px, calc(59.2857px + 21.4286%), 220px);
+
+  display: grid;
+  align-items: center;
+  grid-template-areas: 
+    "info-group image"
+    "temperature image";
+  grid-column-gap: var(--gap);
+  grid-template-columns: calc(100% - var(--image-width) - var(--gap)) var(--image-width);
+
+  &__info-group {
+    max-width: 100%;
+    grid-area: info-group;
+  }
+
+  &__name {
+    max-width: 100%;
+    margin-bottom: 8px;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--text-secondary-color);
+  }
+
+  &__paragraph {
+    color: var(--text-primary-color);
+  }
+
+  &__temperature {
+    grid-area: temperature;
+
+    color: var(--text-secondary-color);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    grid-area: image;
+
+    aspect-ratio: 1;
+  }
+
+  &_skeleton {
+    .general-info__info-group {
+      width: 200px;
+    }
+
+    .general-info__temperature {
+      width: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .general-info {
+    min-width: 0;
+    grid-gap: var(--gap);
+    grid-template-areas: 
+      "info-group"
+      "image"
+      "temperature";
+    justify-items: center;
+    grid-template-columns: 100%;
+
+    text-align: center;
+    
+    &__image {
+      width: clamp(160px, 40%, 220px);
+    }
+  }
+}

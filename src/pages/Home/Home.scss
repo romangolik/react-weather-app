@@ -1,0 +1,65 @@
+.home-page {
+  grid-template-areas:
+    "general-info daily-forecast"
+    "hourly-forecast daily-forecast"
+    "air-conditions daily-forecast";
+
+  &__general-info {
+    padding: 0 40px;
+    min-height: 243.6px;
+    grid-area: general-info;
+  }
+
+  &__hourly-forecast {
+    grid-area: hourly-forecast;
+  }
+
+  &__daily-forecast {
+    grid-area: daily-forecast;
+  }
+
+  &__air-conditions {
+    grid-area: air-conditions;
+  }
+
+  &__conditions {
+    grid-area: all-conditions;
+  }
+
+  &_see-more {
+    grid-template-areas:
+      "general-info hourly-forecast"
+      "all-conditions daily-forecast"
+      "all-conditions daily-forecast";
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  .home-page {
+    grid-template-areas:
+      "general-info"
+      "hourly-forecast"
+      "daily-forecast"
+      "air-conditions";
+
+    &_see-more {
+      grid-template-areas:
+        "general-info"
+        "all-conditions";
+      
+      .home-page__daily-forecast,
+      .home-page__hourly-forecast {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .home-page {
+    &__general-info {
+      padding: 0;
+      margin: 10px 0 20px;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.toggle-group {
+  display: flex;
+  gap: 5px;
+  padding: 4px;
+  align-items: center;
+
+  border-radius: 10px;
+  background-color: var(--toggle-group-bg);
+
+  &__button {
+    position: relative;
+
+    flex: 1;
+    padding: 4px 0;
+
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--toggle-group-button-text-color);
+    background-color: var(--toggle-group-button-bg);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:not(:first-child)::before {
+      content: "";
+
+      position: absolute;
+      left: -3px;
+      top: 50%;
+      height: 80%;
+      width: 1px;
+
+      background-color: var(--divider-color);
+      
+      transform: translateY(-50%);
+    }
+
+    &_active {
+      font-weight: 500;
+
+      color: var(--toggle-group-button-active-text-color);
+      background-color: var(--toggle-group-button-active-bg);
+
+      &::before {
+        display: none;
+      }
+
+      & + .toggle-group__button::before {
+        display: none;
+      }
+    }
+  }
+}

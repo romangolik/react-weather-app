@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 24px 32px 24px 152px;
+
+  box-sizing: border-box;
+}
+
+.search-input-container {
+  margin-bottom: 28px;
+}
+
+@media screen and (max-width: 1000px) {
+  .app {
+    padding: 24px 24px 96px;
+  }
+
+  .search-input-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .app {
+    padding: 16px 16px 80px;
+  }
+}

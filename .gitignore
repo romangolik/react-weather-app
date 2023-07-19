@@ -1,0 +1,10 @@
+.idea
+.vscode
+/build
+node_modules
+
+package-lock.json
+
+.env
+# Local Netlify folder
+.netlify

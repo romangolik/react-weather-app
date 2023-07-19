@@ -1,0 +1,101 @@
+.search-field {
+  position: relative;
+  z-index: 101;
+
+  display: flex;
+  height: 48px;
+
+  overflow: visible;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding: 0 12px;
+
+    border: none;
+    color: var(--search-text-color);
+    outline: none;
+    border-radius: 12px;
+    box-sizing: border-box;
+    background-color: inherit;
+
+    &::placeholder {
+      color: var(--search-text-color);
+      opacity: 1;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+
+    background-color: rgba(1, 1, 1, 40%);
+  }
+
+  &__button {
+    display: inline-flex;
+    height: 100%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--button-base-bg);
+
+    border: none;
+    outline: none;
+    aspect-ratio: 1;
+    background-color: transparent;
+
+    transition: 0.3s color ease;
+
+    &:hover {
+      cursor: pointer;
+
+      color: var(--button-base-hover-bg);
+    }
+  }
+
+  &__button-icon {
+    width: 42%;
+    height: 42%;
+  }
+
+  &__autocomplete {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+
+    width: 100%;
+    padding: 12px;
+    max-height: 400px;
+    height: max-content;
+
+    overflow-y: auto;
+    border-radius: 12px;
+    box-sizing: border-box;
+    background-color: var(--bg-primary);
+  }
+
+  &__autocomplete-item {
+    padding: 8px 0;
+
+    color: var(--text-tertiary-color);
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+
+      color: var(--autocomplete-hover-text-color);
+    }
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .search-field {
+    height: 40px;
+  }
+}

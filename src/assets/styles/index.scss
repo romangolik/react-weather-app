@@ -1,0 +1,10 @@
+@import "./abstract/mixins/text-overflow.scss";
+
+@import "./core/normalize.scss";
+@import "./core/variables.scss";
+@import "./core/typography.scss";
+@import "./core/themes.scss";
+
+body {
+  background-color: var(--body-bg);
+}

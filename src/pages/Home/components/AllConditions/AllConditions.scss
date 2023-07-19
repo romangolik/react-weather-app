@@ -1,0 +1,11 @@
+.all-conditions {
+  display: grid;
+  grid-gap: 16px 25px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 900px) {
+  .all-conditions {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+}
