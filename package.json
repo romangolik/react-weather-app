@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "netlify dev",
+    "build": "netlify build",
     "dev": "webpack-dev-server --env mode=development",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production"
