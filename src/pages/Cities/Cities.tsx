@@ -8,15 +8,19 @@ import {
   useCurrentLocationData,
 } from "@contexts/current-location/current-location.state";
 
+import Overlay from "@components/ui/Overlay";
 import GridContainer from "@components/layout/GridContainer";
 import CityWeatherRow, {
   CityWeatherRowSkeleton,
 } from "@components/shared/CityWeatherRow";
-import CityWeatherSidebar from "./components/CityWeatherSidebar/CityWeatherSidebar";
+import CircularProgress from "@components/ui/CircularProgress";
+import CityWeatherSidebar from "./components/CityWeatherSidebar";
 
 import { 
   openSidebar, 
+  openOverlay,
   closeSidebar, 
+  closeOverlay,
   setInitialize, 
   setSidebarData, 
   setCitiesWeatherData, 
@@ -31,6 +35,7 @@ import { ICitiesState } from "./types/cities-state";
 import "./Cities.scss";
 
 const initialState: ICitiesState = {
+  isOverlayOpen: false,
   isInitialized: false,
   isSidebarShown: false,
   sidebarData: null,
@@ -59,8 +64,13 @@ const Cities: FC = () => {
   }, [matches]);
 
   async function fetchData(): Promise<void> {
+    if (state.isInitialized) {
+      dispatch(openOverlay());
+    }
+
     const data = await CitiesFacade.getCitiesWeather(history);
 
+    dispatch(closeOverlay());
     dispatch(setInitialize());
     dispatch(setSidebarData(data[0]));
     dispatch(setCitiesWeatherData(data));
@@ -121,6 +131,13 @@ const Cities: FC = () => {
           </div>
         )}
       </div>
+      <Overlay 
+        open={state.isOverlayOpen}
+        zIndex={120}>
+        <CircularProgress 
+          width={60}
+          height={60} />
+      </Overlay>
       {state.isInitialized && !state.sidebarData ? null : matches ? (
         <CityWeatherSidebar
           key="temporary"

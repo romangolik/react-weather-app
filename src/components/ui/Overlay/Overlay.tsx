@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 interface OverlayProps extends PropsWithChildren {
   open: boolean;
   zIndex?: number;
-  closeHandler: () => void;
+  closeHandler?: () => void;
 }
 
 const Overlay: FC<OverlayProps> = ({

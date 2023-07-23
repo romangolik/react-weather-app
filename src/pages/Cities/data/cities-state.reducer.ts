@@ -30,6 +30,16 @@ export function citiesStateReducer(
         ...state,
         isSidebarShown: false,
       };
+    case CitiesStateActionTypes.OPEN_OVERLAY:
+      return {
+        ...state,
+        isOverlayOpen: true,
+      };
+    case CitiesStateActionTypes.CLOSE_OVERLAY:
+      return {
+        ...state,
+        isOverlayOpen: false,
+      };
     case CitiesStateActionTypes.SET_CITIES_WEATHER_DATA:
       return {
         ...state,

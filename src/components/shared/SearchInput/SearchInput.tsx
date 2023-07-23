@@ -6,7 +6,7 @@ import { geocodingService } from "@services/geocoding/geocoding.service";
 import { useCurrentLocationApi } from "@contexts/current-location/current-location.state";
 
 import Icon from "@components/ui/Icon";
-import Overlay from "@components/ui/Overlay/Overlay";
+import Overlay from "@components/ui/Overlay";
 import ContentBlock from "@components/layout/ContentBlock";
 
 import { getFormattedLocationName } from "./helpers/get-formatted-location-name";

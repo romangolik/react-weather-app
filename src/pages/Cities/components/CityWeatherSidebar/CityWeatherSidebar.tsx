@@ -4,8 +4,8 @@ import classNames from "classnames";
 
 import Icon from "@components/ui/Icon/Icon";
 import Button from "@components/ui/Button";
+import Overlay from "@components/ui/Overlay";
 import Divider from "@components/ui/Divider";
-import Overlay from "@components/ui/Overlay/Overlay";
 import GeneralInfo from "@components/shared/GeneralInfo";
 import DailyForecast from "@components/shared/DailyForecast";
 import HourlyForecast from "@components/shared/HourlyForecast";
