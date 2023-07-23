@@ -5,6 +5,7 @@ import classNames from "classnames";
 import Icon from "@components/ui/Icon/Icon";
 import Button from "@components/ui/Button";
 import Divider from "@components/ui/Divider";
+import Overlay from "@components/ui/Overlay/Overlay";
 import GeneralInfo from "@components/shared/GeneralInfo";
 import DailyForecast from "@components/shared/DailyForecast";
 import HourlyForecast from "@components/shared/HourlyForecast";
@@ -79,11 +80,10 @@ const CityWeatherSidebar: FC<CityWeatherSidebarProps> = ({
           </Button>
         </div>
       </aside>
-      {isShown && (
-        <div
-          className="city-weather-sidebar__overlay"
-          onClick={closeHandler}></div>
-      )}
+      <Overlay
+        open={isShown}
+        zIndex={110}
+        closeHandler={closeHandler}/>
     </>
   );
 };
