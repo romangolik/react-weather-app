@@ -2,11 +2,12 @@ import React, { FC } from "react";
 
 import classNames from "classnames";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Icon from "@components/ui/Icon";
 import Skeleton from "@components/ui/Skeleton/Skeleton";
 
+import { getSettings } from "@src/store/selectors/getSettings";
 import { getFormattedDate } from "@utils/helpers/get-formatted-date";
 import { temperatureConvertor } from "@utils/helpers/temperature-convertor";
 
@@ -29,7 +30,7 @@ const GeneralInfo: FC<GeneralInfoProps> = ({
     "general-info_skeleton": !name
   });
 
-  const { temperatureScale } = useSettingsData();
+  const { temperatureScale } = useTypedSelector(getSettings);
 
   return (
     <div className={classes}>

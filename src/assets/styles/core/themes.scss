@@ -1,4 +1,4 @@
-.dark-theme {
+:root {
   --body-bg: var(--black);
   --toggle-group-bg: var(--black);
   --toggle-group-button-bg: var(--black);
@@ -29,7 +29,7 @@
   --toggle-group-button-active-text-color: var(--silver);
 }
 
-.light-theme {
+[data-theme="light"]:root {
   --body-bg: var(--white-smoke);
   --toggle-group-bg: var(--white-smoke);
   --toggle-group-button-bg: var(--white-smoke);

@@ -1,14 +1,14 @@
+import { IWeather } from "@services/weather/types/weather.interface";
 import { ILocation } from "@services/geocoding/types/location.interface";
-import { ICurrentLocationData } from "./current-location.state";
+import {
+  CurrentLocationState,
+  CurrentLocationAction,
+  CurrentLocationActionTypes,
+} from "@utils/types/current-location";
 
 import { compareLocations } from "@utils/helpers/compare-locations";
 
 import { LocalStorageKeys } from "@utils/constants/local-storage-keys";
-import {
-  CurrentLocationActions,
-  CurrentLocationActionTypes,
-} from "./current-location.actions";
-import { IWeather } from "@services/weather/types/weather.interface";
 
 function addToHistory(array: ILocation[], location: ILocation) {
   if (array?.length === 0) {
@@ -30,10 +30,12 @@ function removeFromHistory(array: ILocation[], data: ILocation | IWeather) {
   return array.filter((item) => !compareLocations(item, data));
 }
 
+const initialState = {} as CurrentLocationState;
+
 export function currentLocationReducer(
-  state: ICurrentLocationData,
-  action: CurrentLocationActions
-): ICurrentLocationData {
+  state = initialState,
+  action: CurrentLocationAction
+): CurrentLocationState {
   switch (action.type) {
     case CurrentLocationActionTypes.INIT_CURRENT_LOCATION:
       return {

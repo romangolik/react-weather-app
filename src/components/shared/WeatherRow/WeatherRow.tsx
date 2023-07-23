@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Icon from "@components/ui/Icon";
 
@@ -8,6 +8,7 @@ import { ITemperature } from "@services/weather/types/temperature.interface";
 import { IWeatherCondition } from "@services/weather/types/weather-conditions.interface";
 
 import { getDayName } from "@utils/helpers/get-day-name";
+import { getSettings } from "@src/store/selectors/getSettings";
 import { temperatureConvertor } from "@utils/helpers/temperature-convertor";
 
 import "./WeatherRow.scss";
@@ -19,7 +20,7 @@ interface WeatherRowProps {
 }
 
 const WeatherRow: FC<WeatherRowProps> = ({ temp, weatherCondition, time }) => {
-  const { temperatureScale } = useSettingsData();
+  const { temperatureScale } = useTypedSelector(getSettings);
 
   return (
     <div className="weather-row">

@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 
+import { useActions } from "@hooks/useActions";
 import { useDebounce } from "@hooks/useDebounce";
 
 import { geocodingService } from "@services/geocoding/geocoding.service";
-import { useCurrentLocationApi } from "@contexts/current-location/current-location.state";
 
 import Icon from "@components/ui/Icon";
 import Overlay from "@components/ui/Overlay";
@@ -19,9 +19,9 @@ const SearchInput: FC = () => {
   const isComponentMounted = useRef(false);
 
   const [searchValue, setSearchValue] = useState("");
-  const { setCurrentLocation } = useCurrentLocationApi();
   const [locations, setLocations] = useState<ILocation[]>([]);
   const [isOverlayVisible, setOverlayVisibility] = useState(false);
+  const { setCurrentLocation, addLocationToHistory } = useActions();
   const debounceSearchValue = useDebounce(searchValue, 600);
 
   function focusHandler(): void {
@@ -36,6 +36,7 @@ const SearchInput: FC = () => {
     setSearchValue("");
     setOverlayVisibility(false);
     setCurrentLocation(selectedValue);
+    addLocationToHistory(selectedValue);
   }
 
   async function fetchData(search: string): Promise<void> {
@@ -62,8 +63,8 @@ const SearchInput: FC = () => {
         lat,
         lon,
       });
+      setCurrentLocation(data);
       setOverlayVisibility(false);
-      setCurrentLocation(data, false);
     });
   }
 

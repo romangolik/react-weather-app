@@ -1,4 +1,4 @@
-import { ISettingsData } from "@contexts/settings/settings.state";
+import { ISettingsState } from "@utils/types/settings";
 import { IWeatherDaily } from "@services/weather/types/weather-daily.interface";
 
 import { dateConvertor } from "@utils/helpers/date-convertor";
@@ -21,7 +21,7 @@ export const weatherConditions = [
   {
     iconName: "thermometer",
     title: "Feels like",
-    extractor: (data: IWeatherDaily, settings: ISettingsData) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState) =>
       `${temperatureConvertor(
         data?.feels_like.day,
         settings.temperatureScale
@@ -30,7 +30,7 @@ export const weatherConditions = [
   {
     iconName: "wind",
     title: "Wind",
-    extractor: (data: IWeatherDaily, settings: ISettingsData) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState) =>
       `${windSpeedConvertor(data?.wind_speed, settings.windSpeedScale)} ${
         WIND_SPEED_TITLES[settings.windSpeedScale]
       }`,
@@ -53,7 +53,7 @@ export const weatherConditions = [
   {
     iconName: "pressure",
     title: "Pressure",
-    extractor: (data: IWeatherDaily, settings: ISettingsData) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState) =>
       `${pressureConvertor(data?.pressure, settings.pressureScale)} ${
         PRESSURE_TITLES[settings.pressureScale]
       }`,
@@ -66,13 +66,13 @@ export const weatherConditions = [
   {
     iconName: "sunrise",
     title: "Sunrise",
-    extractor: (data: IWeatherDaily, settings: ISettingsData, timezone: string) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState, timezone: string) =>
       `${dateConvertor(data?.sunrise, timezone, settings.timeFormat)}`,
   },
   {
     iconName: "sunset",
     title: "Sunset",
-    extractor: (data: IWeatherDaily, settings: ISettingsData, timezone: string) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState, timezone: string) =>
       `${dateConvertor(data?.sunset, timezone, settings.timeFormat)}`,
   },
 ];

@@ -2,11 +2,9 @@ import React, { FC, useEffect, useReducer, useRef } from "react";
 
 import { CitiesFacade } from "./services/cities-facade.service";
 
+import { useActions } from "@hooks/useActions";
 import { useMediaQuery } from "@hooks/useMediaQuery";
-import {
-  useCurrentLocationApi,
-  useCurrentLocationData,
-} from "@contexts/current-location/current-location.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Overlay from "@components/ui/Overlay";
 import GridContainer from "@components/layout/GridContainer";
@@ -15,6 +13,13 @@ import CityWeatherRow, {
 } from "@components/shared/CityWeatherRow";
 import CircularProgress from "@components/ui/CircularProgress";
 import CityWeatherSidebar from "./components/CityWeatherSidebar";
+
+import { compareLocations } from "@utils/helpers/compare-locations";
+import { getCurrentLocation } from "@src/store/selectors/getCurrentLocation";
+import { citiesStateReducer } from "./data/cities-state.reducer";
+
+import { IWeather } from "@services/weather/types/weather.interface";
+import { ICitiesState } from "./types/cities-state";
 
 import { 
   openSidebar, 
@@ -26,11 +31,6 @@ import {
   setCitiesWeatherData, 
   setPrevHistoryLength,
 } from "./data/cities-state.actions";
-import { compareLocations } from "@utils/helpers/compare-locations";
-import { citiesStateReducer } from "./data/cities-state.reducer";
-
-import { IWeather } from "@services/weather/types/weather.interface";
-import { ICitiesState } from "./types/cities-state";
 
 import "./Cities.scss";
 
@@ -47,9 +47,9 @@ const Cities: FC = () => {
   const skeletonArray = useRef(new Array(6).fill(0));
 
   const matches = useMediaQuery("(max-width: 1210px)");
-  const { currentLocation, history } = useCurrentLocationData();
   const [state, dispatch] = useReducer(citiesStateReducer, initialState);
-  const { setCurrentLocation, removeFromHistory } = useCurrentLocationApi();
+  const { setCurrentLocation, removeLocationFromHistory } = useActions();
+  const { currentLocation, history } = useTypedSelector(getCurrentLocation);
 
   useEffect(() => {
     if (history && history.length >= state.prevHistoryLength) {
@@ -87,7 +87,7 @@ const Cities: FC = () => {
 
   function selectAsCurrentLocation(a: IWeather): void {
     const finded = history.find((item) => compareLocations(item, a));
-    setCurrentLocation(finded, false);
+    setCurrentLocation(finded);
 
     if (matches) {
       dispatch(closeSidebar());
@@ -101,7 +101,7 @@ const Cities: FC = () => {
 
     dispatch(setCitiesWeatherData(filteredData));
     dispatch(setSidebarData(filteredData[0]));
-    removeFromHistory(selectedData);
+    removeLocationFromHistory(selectedData);
 
     if (matches) {
       dispatch(closeSidebar());

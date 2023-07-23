@@ -1,12 +1,13 @@
-import React, { FC, MouseEventHandler, useEffect, useRef, useState } from "react";
+import React, { FC, useRef } from "react";
 
 import classNames from "classnames";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Icon from "@components/ui/Icon";
 import ContentBlock from "@components/layout/ContentBlock";
 
+import { getSettings } from "@src/store/selectors/getSettings";
 import { dateConvertor } from "@utils/helpers/date-convertor";
 import { temperatureConvertor } from "@utils/helpers/temperature-convertor";
 
@@ -28,7 +29,7 @@ const CityWeatherRow: FC<CityWeatherRowProps> = ({
   isCurrentLocation = false,
 }) => {
   const date = useRef(Date.now());
-  const { timeFormat, temperatureScale } = useSettingsData();
+  const { timeFormat, temperatureScale } = useTypedSelector(getSettings);
 
   const classes = classNames("city-weather", {
     "city-weather_active": isActiveRow,

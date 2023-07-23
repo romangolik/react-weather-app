@@ -1,4 +1,4 @@
-import { ISettingsData } from "@contexts/settings/settings.state";
+import { ISettingsState } from "@utils/types/settings";
 import { IWeatherDaily } from "@services/weather/types/weather-daily.interface";
 
 import { windSpeedConvertor } from "@utils/helpers/wind-speed-convertor";
@@ -10,7 +10,7 @@ export const weatherConditions = [
   {
     iconName: "thermometer",
     title: "Feels like",
-    extractor: (data: IWeatherDaily, settings: ISettingsData) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState) =>
       `${temperatureConvertor(
         data?.feels_like.day,
         settings.temperatureScale
@@ -19,7 +19,7 @@ export const weatherConditions = [
   {
     iconName: "wind",
     title: "Wind",
-    extractor: (data: IWeatherDaily, settings: ISettingsData) =>
+    extractor: (data: IWeatherDaily, settings: ISettingsState) =>
       `${windSpeedConvertor(data?.wind_speed, settings.windSpeedScale)} ${
         WIND_SPEED_TITLES[settings.windSpeedScale]
       }`,

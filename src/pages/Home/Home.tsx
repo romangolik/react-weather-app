@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-
-import classNames from "classnames";
 import { Route, Routes, useLocation } from "react-router-dom";
 
+import classNames from "classnames";
+
+import { useTypedSelector } from "@hooks/useTypedSelector";
+
 import { weatherService } from "@services/weather/weather.service";
-import { useCurrentLocationData } from "@contexts/current-location/current-location.state";
 
 import Overlay from "@components/ui/Overlay";
 import GeneralInfo from "@components/shared/GeneralInfo";
@@ -16,6 +17,7 @@ import HourlyForecast from "@components/shared/HourlyForecast";
 import CircularProgress from "@components/ui/CircularProgress";
 import AditionalConditions from "./components/AditionalConditions";
 
+import { getCurrentLocation } from "@src/store/selectors/getCurrentLocation";
 import { filterHourlyForecast } from "@utils/helpers/filter-hourly-forecast";
 
 import { IWeather } from "@services/weather/types/weather.interface";
@@ -26,9 +28,9 @@ const Home: FC = () => {
   const initialized = useRef(false);
 
   const location = useLocation();
-  const { currentLocation, history } = useCurrentLocationData();
   const [weatherData, setWeatherData] = useState<IWeather>(null);
   const [isLoaderVisible, setLoaderVisibility] = useState(false);
+  const { currentLocation } = useTypedSelector(getCurrentLocation);
 
   const classes = classNames("home-page", {
     "home-page_see-more": location.pathname !== "/home",

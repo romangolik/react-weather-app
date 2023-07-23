@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Icon from "@components/ui/Icon";
 
+import { getSettings } from "@src/store/selectors/getSettings";
 import { dateConvertor } from "@utils/helpers/date-convertor";
 import { temperatureConvertor } from "@utils/helpers/temperature-convertor";
 
@@ -17,7 +18,7 @@ interface WeatherCardProps {
 }
 
 const WeatherCard: FC<WeatherCardProps> = ({ time, temp, iconName, timezone }) => {
-  const { timeFormat, temperatureScale } = useSettingsData();
+  const { timeFormat, temperatureScale } = useTypedSelector(getSettings);
 
   return (
     <div className="weather-card">

@@ -8,7 +8,7 @@ export function buildResolve(): webpack.ResolveOptions {
             '@assets': path.resolve('./src/assets'),
             '@components': path.resolve('./src/components'),
             '@pages': path.resolve('./src/pages'),
-            '@contexts': path.resolve('./src/contexts'),
+            '@store': path.resolve('./src/store'),
             '@routes': path.resolve('./src/routes'),
             '@hooks': path.resolve('./src/hooks'),
             '@utils': path.resolve('./src/utils'),

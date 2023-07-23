@@ -2,12 +2,14 @@ import React, { FC, useRef } from "react";
 
 import classNames from "classnames";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import ContentBlock from "@components/layout/ContentBlock";
 import WeatherCondition, {
   WeatherConditionSkeleton,
 } from "@components/shared/WeatherCondition";
+
+import { getSettings } from "@src/store/selectors/getSettings";
 
 import { IWeatherDaily } from "@services/weather/types/weather-daily.interface";
 
@@ -26,7 +28,7 @@ const AllConditions: FC<AllConditionsProps> = ({
   className,
   dailyWeather,
 }) => {
-  const settings = useSettingsData();
+  const settings = useTypedSelector(getSettings);
   const skeletonArray = useRef(new Array(weatherConditions.length).fill(0));
 
   const classes = classNames("all-conditions", className);

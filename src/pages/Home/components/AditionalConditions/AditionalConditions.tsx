@@ -2,13 +2,15 @@ import React, { FC } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { useSettingsData } from "@contexts/settings/settings.state";
+import { useTypedSelector } from "@hooks/useTypedSelector";
 
 import Button from "@components/ui/Button";
 import Widget from "@components/layout/Widget";
 import WeatherCondition, {
   WeatherConditionSkeleton,
 } from "@components/shared/WeatherCondition";
+
+import { getSettings } from "@src/store/selectors/getSettings";
 
 import { IWeatherDaily } from "@services/weather/types/weather-daily.interface";
 
@@ -24,7 +26,7 @@ const AditionalConditions: FC<AditionalConditionsProps> = ({
   dailyWeather,
 }) => {
   const navigate = useNavigate();
-  const settings = useSettingsData();
+  const settings = useTypedSelector(getSettings);
 
   const navigateToMoreConditions = () => {
     navigate("./more-conditions");
