@@ -50,8 +50,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
       };
     }
 
-    console.log('work');
-
     const { data } = await axios.get(url, {
       params: {
         appid: API_KEY,
