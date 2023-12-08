@@ -46,7 +46,7 @@ const GeneralInfo: FC<GeneralInfoProps> = ({
         <Skeleton variant="rounded" className="general-info__image" />
       )}
       <p className="xxx-large-text bold-weight general-info__temperature">
-        {temp ? (
+        {temp !== undefined ? (
           `${temperatureConvertor(temp, temperatureScale)}°`
         ) : (
           <Skeleton />
